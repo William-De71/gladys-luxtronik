@@ -1,0 +1,23 @@
+gladys-luxtronik
+Copyright 2026 William-De71
+
+This product includes software developed by William-De71
+(https://github.com/William-De71/gladys-luxtronik), licensed under the
+Apache License, Version 2.0.
+
+The Luxtronik client (src/luxtronik/) and the fake controller of the tests
+were written in JavaScript for this project, from the understanding of the
+protocol of port 8889 as documented by these projects, all released under
+the MIT License: python-luxtronik (https://github.com/Bouni/python-luxtronik:
+commands 3002 to 3005, the register indexes, scales and codes, the search
+datagram), BenPru/luxtronik (https://github.com/BenPru/luxtronik: the serial
+number, the hot water target register by firmware, the scale of the energy
+input counters, the firmware V1.90 / V2.90 that crashes on writes, the
+detection of hot water and cooling) and TbsJah/ioBroker.luxtronik2-controller
+(https://github.com/TbsJah/ioBroker.luxtronik2-controller: read before write,
+flash wear, the ports of the WebSocket and Modbus interfaces). No code was copied. The fake controller was checked against
+python-luxtronik 0.3.14 (scripts/check-simulator.sh).
+
+Luxtronik and Alpha Innotec are trademarks of their owners. This project is
+not affiliated with, endorsed or supported by Alpha Innotec, ait-deutschland
+or the heat pump brands that use the Luxtronik controller.

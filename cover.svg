@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="534" viewBox="0 0 800 534">
+  <!-- Illustration only: no brand logo (Luxtronik and Alpha Innotec are trademarks of their owner, not affiliated). -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10202f"/>
+      <stop offset="1" stop-color="#1d3a52"/>
+    </linearGradient>
+    <radialGradient id="warm" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff8a3d" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ff8a3d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="cold" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4fb3ff" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#4fb3ff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="unit" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f6f8"/>
+      <stop offset="1" stop-color="#c9d2dc"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b2b3a"/>
+      <stop offset="1" stop-color="#0d1822"/>
+    </linearGradient>
+    <linearGradient id="pipeHot" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff6b3d"/>
+      <stop offset="1" stop-color="#ffb347"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="534" fill="url(#bg)"/>
+  <circle cx="190" cy="250" r="200" fill="url(#cold)"/>
+  <circle cx="610" cy="250" r="200" fill="url(#warm)"/>
+
+  <!-- Outdoor unit of an air / water heat pump, the fan turning -->
+  <g transform="translate(60 130)">
+    <rect x="0" y="0" width="250" height="210" rx="18" fill="url(#unit)"/>
+    <circle cx="105" cy="105" r="78" fill="#dfe5eb" stroke="#aeb9c5" stroke-width="4"/>
+    <g fill="#8796a6">
+      <path d="M105 105 L105 40 A28 28 0 0 1 140 70 Z"/>
+      <path d="M105 105 L170 105 A28 28 0 0 1 140 140 Z"/>
+      <path d="M105 105 L105 170 A28 28 0 0 1 70 140 Z"/>
+      <path d="M105 105 L40 105 A28 28 0 0 1 70 70 Z"/>
+    </g>
+    <circle cx="105" cy="105" r="12" fill="#5b6876"/>
+    <g stroke="#b9c3cd" stroke-width="3">
+      <line x1="200" y1="40" x2="232" y2="40"/>
+      <line x1="200" y1="60" x2="232" y2="60"/>
+      <line x1="200" y1="80" x2="232" y2="80"/>
+      <line x1="200" y1="100" x2="232" y2="100"/>
+    </g>
+    <rect x="20" y="210" width="26" height="14" fill="#7d8a97"/>
+    <rect x="204" y="210" width="26" height="14" fill="#7d8a97"/>
+    <!-- cold air -->
+    <g stroke="#7cc4ff" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.8">
+      <path d="M-40 70 q15 -10 30 0 t30 0"/>
+      <path d="M-40 105 q15 -10 30 0 t30 0"/>
+      <path d="M-40 140 q15 -10 30 0 t30 0"/>
+    </g>
+  </g>
+
+  <!-- Pipes to the house -->
+  <path d="M310 200 C 380 200, 400 180, 470 180" stroke="url(#pipeHot)" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M310 270 C 380 270, 400 290, 470 290" stroke="#4fb3ff" stroke-width="12" fill="none" stroke-linecap="round"/>
+
+  <!-- The controller screen, read by Gladys -->
+  <g transform="translate(470 110)">
+    <rect x="0" y="0" width="270" height="250" rx="22" fill="#e9eef3"/>
+    <rect x="18" y="18" width="234" height="150" rx="12" fill="url(#screen)"/>
+    <text x="36" y="58" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" fill="#9fb3c8">4.2 °C</text>
+    <text x="36" y="104" font-family="DejaVu Sans, Arial, sans-serif" font-size="40" font-weight="bold" fill="#ffb347">35.2 °C</text>
+    <text x="36" y="146" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" fill="#7cc4ff">48 °C</text>
+    <circle cx="214" cy="52" r="10" fill="#2bd38f"/>
+    <circle cx="135" cy="208" r="28" fill="#d3dbe3" stroke="#aeb9c5" stroke-width="4"/>
+    <circle cx="135" cy="208" r="9" fill="#8796a6"/>
+  </g>
+
+  <!-- Name -->
+  <text x="400" y="440" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="46" font-weight="bold" fill="#ffffff">Luxtronik</text>
+  <text x="400" y="480" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" fill="#a9bccd">heat pumps in Gladys Assistant, on the local network</text>
+</svg>

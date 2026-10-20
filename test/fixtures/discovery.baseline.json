@@ -1,0 +1,594 @@
+[
+  {
+    "external_id": "ext:test-integration:heatpump:2203-e9a",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:outdoor",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": -50,
+        "max": 60,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:outdoor_average",
+        "category": "temperature-sensor",
+        "type": "average",
+        "unit": "celsius",
+        "min": -50,
+        "max": 60,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:flow",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:return",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:return_target",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:hot_gas",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": 0,
+        "max": 150,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:source_in",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": -40,
+        "max": 60,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:source_out",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": -40,
+        "max": 60,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:operating_mode",
+        "category": "text",
+        "type": "text",
+        "unit": null,
+        "min": 0,
+        "max": 0,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:status",
+        "category": "text",
+        "type": "text",
+        "unit": null,
+        "min": 0,
+        "max": 0,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:last_error",
+        "category": "text",
+        "type": "text",
+        "unit": null,
+        "min": 0,
+        "max": 0,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:compressor",
+        "category": "switch",
+        "type": "binary",
+        "unit": null,
+        "min": 0,
+        "max": 1,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:backup_heater",
+        "category": "switch",
+        "type": "binary",
+        "unit": null,
+        "min": 0,
+        "max": 1,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:power_input",
+        "category": "energy-sensor",
+        "type": "power",
+        "unit": "watt",
+        "min": 0,
+        "max": 30000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:energy_input",
+        "category": "energy-sensor",
+        "type": "index",
+        "unit": "kilowatt-hour",
+        "min": 0,
+        "max": 10000000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:heat_output",
+        "category": "energy-production-sensor",
+        "type": "power",
+        "unit": "watt",
+        "min": 0,
+        "max": 60000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:heat_produced",
+        "category": "energy-production-sensor",
+        "type": "index",
+        "unit": "kilowatt-hour",
+        "min": 0,
+        "max": 10000000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:compressor_hours",
+        "category": "duration",
+        "type": "decimal",
+        "unit": "hours",
+        "min": 0,
+        "max": 1000000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:compressor_starts",
+        "category": "counter-sensor",
+        "type": "integer",
+        "unit": null,
+        "min": 0,
+        "max": 100000000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9a:backup_hours",
+        "category": "duration",
+        "type": "decimal",
+        "unit": "hours",
+        "min": 0,
+        "max": 1000000,
+        "step": null,
+        "read_only": true
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:heating:2203-e9a",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:heating:2203-e9a:mode",
+        "category": "text",
+        "type": "select",
+        "unit": null,
+        "min": 0,
+        "max": 0,
+        "step": null,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:heating:2203-e9a:offset",
+        "category": "thermostat",
+        "type": "target-temperature",
+        "unit": "celsius",
+        "min": -5,
+        "max": 5,
+        "step": 0.5,
+        "read_only": false
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:dhw:2203-e9a",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:dhw:2203-e9a:temperature",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:dhw:2203-e9a:target",
+        "category": "water-heater",
+        "type": "target-temperature",
+        "unit": "celsius",
+        "min": 30,
+        "max": 65,
+        "step": 0.5,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:dhw:2203-e9a:mode",
+        "category": "text",
+        "type": "select",
+        "unit": null,
+        "min": 0,
+        "max": 0,
+        "step": null,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:dhw:2203-e9a:heating",
+        "category": "water-heater",
+        "type": "heating",
+        "unit": null,
+        "min": 0,
+        "max": 1,
+        "step": null,
+        "read_only": true
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:heatpump:2203-e9b",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:outdoor",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": -50,
+        "max": 60,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:outdoor_average",
+        "category": "temperature-sensor",
+        "type": "average",
+        "unit": "celsius",
+        "min": -50,
+        "max": 60,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:flow",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:return",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:return_target",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:hot_gas",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": 0,
+        "max": 150,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:source_in",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": -40,
+        "max": 60,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:source_out",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": -40,
+        "max": 60,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:room",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": -20,
+        "max": 60,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:operating_mode",
+        "category": "text",
+        "type": "text",
+        "unit": null,
+        "min": 0,
+        "max": 0,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:status",
+        "category": "text",
+        "type": "text",
+        "unit": null,
+        "min": 0,
+        "max": 0,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:last_error",
+        "category": "text",
+        "type": "text",
+        "unit": null,
+        "min": 0,
+        "max": 0,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:compressor",
+        "category": "switch",
+        "type": "binary",
+        "unit": null,
+        "min": 0,
+        "max": 1,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:backup_heater",
+        "category": "switch",
+        "type": "binary",
+        "unit": null,
+        "min": 0,
+        "max": 1,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:power_input",
+        "category": "energy-sensor",
+        "type": "power",
+        "unit": "watt",
+        "min": 0,
+        "max": 30000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:energy_input",
+        "category": "energy-sensor",
+        "type": "index",
+        "unit": "kilowatt-hour",
+        "min": 0,
+        "max": 10000000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:heat_output",
+        "category": "energy-production-sensor",
+        "type": "power",
+        "unit": "watt",
+        "min": 0,
+        "max": 60000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:heat_produced",
+        "category": "energy-production-sensor",
+        "type": "index",
+        "unit": "kilowatt-hour",
+        "min": 0,
+        "max": 10000000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:compressor_hours",
+        "category": "duration",
+        "type": "decimal",
+        "unit": "hours",
+        "min": 0,
+        "max": 1000000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:compressor_starts",
+        "category": "counter-sensor",
+        "type": "integer",
+        "unit": null,
+        "min": 0,
+        "max": 100000000,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:heatpump:2203-e9b:backup_hours",
+        "category": "duration",
+        "type": "decimal",
+        "unit": "hours",
+        "min": 0,
+        "max": 1000000,
+        "step": null,
+        "read_only": true
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:heating:2203-e9b",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:heating:2203-e9b:mode",
+        "category": "text",
+        "type": "select",
+        "unit": null,
+        "min": 0,
+        "max": 0,
+        "step": null,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:heating:2203-e9b:offset",
+        "category": "thermostat",
+        "type": "target-temperature",
+        "unit": "celsius",
+        "min": -5,
+        "max": 5,
+        "step": 0.5,
+        "read_only": false
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:dhw:2203-e9b",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:dhw:2203-e9b:temperature",
+        "category": "temperature-sensor",
+        "type": "decimal",
+        "unit": "celsius",
+        "min": 0,
+        "max": 100,
+        "step": null,
+        "read_only": true
+      },
+      {
+        "external_id": "ext:test-integration:dhw:2203-e9b:target",
+        "category": "water-heater",
+        "type": "target-temperature",
+        "unit": "celsius",
+        "min": 30,
+        "max": 65,
+        "step": 0.5,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:dhw:2203-e9b:mode",
+        "category": "text",
+        "type": "select",
+        "unit": null,
+        "min": 0,
+        "max": 0,
+        "step": null,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:dhw:2203-e9b:heating",
+        "category": "water-heater",
+        "type": "heating",
+        "unit": null,
+        "min": 0,
+        "max": 1,
+        "step": null,
+        "read_only": true
+      }
+    ]
+  },
+  {
+    "external_id": "ext:test-integration:cooling:2203-e9b",
+    "should_poll": false,
+    "features": [
+      {
+        "external_id": "ext:test-integration:cooling:2203-e9b:enabled",
+        "category": "switch",
+        "type": "binary",
+        "unit": null,
+        "min": 0,
+        "max": 1,
+        "step": null,
+        "read_only": false
+      },
+      {
+        "external_id": "ext:test-integration:cooling:2203-e9b:target",
+        "category": "thermostat",
+        "type": "target-temperature",
+        "unit": "celsius",
+        "min": 18,
+        "max": 30,
+        "step": 0.5,
+        "read_only": false
+      }
+    ]
+  }
+]

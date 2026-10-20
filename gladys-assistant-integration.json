@@ -1,0 +1,1045 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "Luxtronik",
+  "description": {
+    "en": "Luxtronik heat pumps (Alpha Innotec, Novelan…): temperatures, modes, energy, on the LAN.",
+    "fr": "Pompes à chaleur Luxtronik (Alpha Innotec, Novelan…) : températures, modes, énergie, en local.",
+    "de": "Luxtronik-Wärmepumpen (Alpha Innotec, Novelan…): Temperaturen, Modi, Energie, lokal.",
+    "es": "Bombas de calor Luxtronik (Alpha Innotec, Novelan…): temperaturas, modos, energía, en local."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-luxtronik:0.1.0",
+  "gladys_version": ">=5.1.0",
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-luxtronik/main/cover.jpg",
+  "categories": ["climate", "energy"],
+  "transports": ["local"],
+  "network_discovery": [
+    {
+      "type": "udp-active-broadcast",
+      "ports": [4444, 47808]
+    }
+  ],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "Your heat pump",
+        "fr": "Votre pompe à chaleur",
+        "de": "Ihre Wärmepumpe",
+        "es": "Su bomba de calor"
+      },
+      "description": {
+        "en": "Luxtronik 2.0 and 2.1 is the controller of many heat pumps: Alpha Innotec, Novelan, Siemens, Buderus, Nibe AP, Roth, Elco, Wolf. Gladys reads it directly on the local network (TCP port 8889), without any cloud: plug the controller into your network with a cable and give it a fixed IP address in your router. Its address is shown on the controller, in Service > Information > IP address. Nothing leaves your network. Not affiliated with Alpha Innotec or the brands above.",
+        "fr": "Luxtronik 2.0 et 2.1 est le régulateur de nombreuses pompes à chaleur : Alpha Innotec, Novelan, Siemens, Buderus, Nibe AP, Roth, Elco, Wolf. Gladys le lit directement sur le réseau local (port TCP 8889), sans aucun cloud : branchez le régulateur à votre réseau par un câble et donnez-lui une adresse IP fixe dans votre box. Son adresse est affichée sur le régulateur, dans Service > Information > Adresse IP. Rien ne sort de votre réseau. Sans lien avec Alpha Innotec ni les marques citées.",
+        "de": "Luxtronik 2.0 und 2.1 ist der Regler vieler Wärmepumpen: Alpha Innotec, Novelan, Siemens, Buderus, Nibe AP, Roth, Elco, Wolf. Gladys liest ihn direkt im lokalen Netzwerk (TCP-Port 8889), ohne Cloud: Verbinden Sie den Regler per Kabel mit Ihrem Netzwerk und geben Sie ihm im Router eine feste IP-Adresse. Die Adresse steht am Regler unter Service > Information > IP-Adresse. Nichts verlässt Ihr Netzwerk. Nicht mit Alpha Innotec oder den genannten Marken verbunden.",
+        "es": "Luxtronik 2.0 y 2.1 es el regulador de muchas bombas de calor: Alpha Innotec, Novelan, Siemens, Buderus, Nibe AP, Roth, Elco, Wolf. Gladys lo lee directamente en la red local (puerto TCP 8889), sin ninguna nube: conecte el regulador a su red con un cable y asígnele una dirección IP fija en su router. La dirección aparece en el regulador, en Servicio > Información > Dirección IP. Nada sale de su red. Sin relación con Alpha Innotec ni con las marcas citadas."
+      },
+      "links": [
+        {
+          "url": "https://github.com/William-De71/gladys-luxtronik/blob/main/docs/en.md",
+          "label": {
+            "en": "Setup guide",
+            "fr": "Guide d’installation",
+            "de": "Installationsanleitung",
+            "es": "Guía de instalación"
+          }
+        }
+      ]
+    },
+    {
+      "key": "hosts",
+      "type": "string",
+      "default": "",
+      "label": {
+        "en": "Address of the heat pump",
+        "fr": "Adresse de la pompe à chaleur",
+        "de": "Adresse der Wärmepumpe",
+        "es": "Dirección de la bomba de calor"
+      },
+      "placeholder": {
+        "en": "192.168.1.20",
+        "fr": "192.168.1.20",
+        "de": "192.168.1.20",
+        "es": "192.168.1.20"
+      },
+      "description": {
+        "en": "The IP address of the controller; several heat pumps: separate them with commas. Add “:port” only if your installer changed port 8889.",
+        "fr": "L’adresse IP du régulateur ; plusieurs pompes à chaleur : séparez-les par des virgules. Ajoutez « :port » seulement si votre installateur a changé le port 8889.",
+        "de": "Die IP-Adresse des Reglers; mehrere Wärmepumpen durch Kommas trennen. „:Port“ nur angeben, wenn Ihr Installateur Port 8889 geändert hat.",
+        "es": "La dirección IP del regulador; varias bombas de calor: sepárelas con comas. Añada «:puerto» solo si su instalador cambió el puerto 8889."
+      }
+    },
+    {
+      "key": "network_search",
+      "type": "boolean",
+      "default": true,
+      "label": {
+        "en": "Also search the network",
+        "fr": "Chercher aussi sur le réseau",
+        "de": "Auch im Netzwerk suchen",
+        "es": "Buscar también en la red"
+      },
+      "description": {
+        "en": "Sends the Alpha Innotec search message (UDP 4444 and 47808) through Gladys. Not every firmware answers it: the typed address always works.",
+        "fr": "Envoie le message de recherche Alpha Innotec (UDP 4444 et 47808) via Gladys. Tous les firmwares n’y répondent pas : l’adresse saisie fonctionne toujours.",
+        "de": "Sendet die Alpha-Innotec-Suchnachricht (UDP 4444 und 47808) über Gladys. Nicht jede Firmware antwortet: Die eingegebene Adresse funktioniert immer.",
+        "es": "Envía el mensaje de búsqueda de Alpha Innotec (UDP 4444 y 47808) a través de Gladys. No todos los firmwares responden: la dirección escrita siempre funciona."
+      }
+    },
+    {
+      "key": "poll_interval",
+      "type": "select",
+      "default": "60",
+      "label": {
+        "en": "Reading interval",
+        "fr": "Intervalle de lecture",
+        "de": "Leseintervall",
+        "es": "Intervalo de lectura"
+      },
+      "description": {
+        "en": "How often the controller is read. It copes badly with frequent requests: 30 seconds at least.",
+        "fr": "À quelle fréquence le régulateur est lu. Il supporte mal les demandes fréquentes : 30 secondes au minimum.",
+        "de": "Wie oft der Regler gelesen wird. Häufige Anfragen verträgt er schlecht: mindestens 30 Sekunden.",
+        "es": "Cada cuánto se lee el regulador. Tolera mal las peticiones frecuentes: 30 segundos como mínimo."
+      },
+      "options": [
+        {
+          "value": "30",
+          "label": {
+            "en": "Every 30 seconds",
+            "fr": "Toutes les 30 secondes",
+            "de": "Alle 30 Sekunden",
+            "es": "Cada 30 segundos"
+          }
+        },
+        {
+          "value": "60",
+          "label": {
+            "en": "Every minute",
+            "fr": "Toutes les minutes",
+            "de": "Jede Minute",
+            "es": "Cada minuto"
+          }
+        },
+        {
+          "value": "120",
+          "label": {
+            "en": "Every 2 minutes",
+            "fr": "Toutes les 2 minutes",
+            "de": "Alle 2 Minuten",
+            "es": "Cada 2 minutos"
+          }
+        },
+        {
+          "value": "300",
+          "label": {
+            "en": "Every 5 minutes",
+            "fr": "Toutes les 5 minutes",
+            "de": "Alle 5 Minuten",
+            "es": "Cada 5 minutos"
+          }
+        }
+      ]
+    },
+    {
+      "key": "changes",
+      "type": "section",
+      "label": {
+        "en": "Changing settings",
+        "fr": "Modifier les réglages",
+        "de": "Einstellungen ändern",
+        "es": "Cambiar ajustes"
+      },
+      "description": {
+        "en": "Off by default: Gladys only reads. Once allowed, Gladys can change the heating and hot water modes, the temperature +/-, the hot water target and cooling. Each change is written to the memory of the controller, which wears out: the same value is never written twice, one setting at most every 2 minutes, 50 changes a day at most, within safe bounds. Firmware V1.90 and V2.90 crash on any change: they stay read only.",
+        "fr": "Désactivé par défaut : Gladys ne fait que lire. Une fois autorisé, Gladys peut changer les modes chauffage et eau chaude, la température +/-, la consigne d’eau chaude et le rafraîchissement. Chaque modification est écrite dans la mémoire du régulateur, qui s’use : une même valeur n’est jamais réécrite, un réglage au plus toutes les 2 minutes, 50 modifications par jour au maximum, dans des bornes sûres. Les firmwares V1.90 et V2.90 plantent à la moindre modification : ils restent en lecture seule.",
+        "de": "Standardmäßig aus: Gladys liest nur. Wenn erlaubt, kann Gladys die Betriebsarten Heizung und Warmwasser, Temperatur +/-, das Warmwasser-Soll und die Kühlung ändern. Jede Änderung wird in den Speicher des Reglers geschrieben, der sich abnutzt: derselbe Wert wird nie erneut geschrieben, eine Einstellung höchstens alle 2 Minuten, höchstens 50 Änderungen pro Tag, in sicheren Grenzen. Firmware V1.90 und V2.90 stürzen bei jeder Änderung ab: Sie bleiben schreibgeschützt.",
+        "es": "Desactivado por defecto: Gladys solo lee. Una vez permitido, Gladys puede cambiar los modos de calefacción y agua caliente, la temperatura +/-, la consigna de agua caliente y la refrigeración. Cada cambio se escribe en la memoria del regulador, que se desgasta: un mismo valor nunca se reescribe, un ajuste como máximo cada 2 minutos, 50 cambios al día como máximo, dentro de límites seguros. Los firmwares V1.90 y V2.90 se bloquean con cualquier cambio: quedan en solo lectura."
+      }
+    },
+    {
+      "key": "allow_writes",
+      "type": "boolean",
+      "default": false,
+      "label": {
+        "en": "Allow changes",
+        "fr": "Autoriser les modifications",
+        "de": "Änderungen erlauben",
+        "es": "Permitir cambios"
+      },
+      "description": {
+        "en": "Tick only if you know these settings: a wrong one can stop the heat pump. Check your manual.",
+        "fr": "À cocher seulement si vous connaissez ces réglages : un mauvais réglage peut arrêter la pompe à chaleur. Consultez votre notice.",
+        "de": "Nur aktivieren, wenn Sie diese Einstellungen kennen: eine falsche kann die Wärmepumpe stoppen. Siehe Handbuch.",
+        "es": "Márquelo solo si conoce estos ajustes: uno incorrecto puede detener la bomba de calor. Consulte su manual."
+      }
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "default": "en",
+      "label": {
+        "en": "Language of the names and texts",
+        "fr": "Langue des noms et des textes",
+        "de": "Sprache der Namen und Texte",
+        "es": "Idioma de los nombres y textos"
+      },
+      "description": {
+        "en": "Gladys does not tell integrations the language of its users: choose the one of the feature names, of the modes and of the error messages.",
+        "fr": "Gladys n’indique pas aux intégrations la langue de ses utilisateurs : choisissez celle des noms des fonctionnalités, des modes et des messages d’erreur.",
+        "de": "Gladys teilt Integrationen die Sprache der Benutzer nicht mit: Wählen Sie die der Funktionsnamen, der Betriebsarten und der Fehlermeldungen.",
+        "es": "Gladys no indica a las integraciones el idioma de sus usuarios: elija el de los nombres de las funciones, de los modos y de los mensajes de error."
+      },
+      "options": [
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "key": "test_connection",
+      "timeout_seconds": 90,
+      "label": {
+        "en": "Search and test the heat pumps",
+        "fr": "Rechercher et tester les pompes à chaleur",
+        "de": "Wärmepumpen suchen und testen",
+        "es": "Buscar y probar las bombas de calor"
+      },
+      "description": {
+        "en": "Reads the addresses above (and searches the network if allowed), then lists every heat pump found with its firmware, its serial number and whether changes are possible.",
+        "fr": "Lit les adresses ci-dessus (et cherche sur le réseau si c’est permis), puis liste chaque pompe à chaleur trouvée avec son firmware, son numéro de série et la possibilité de la modifier.",
+        "de": "Liest die obigen Adressen (und sucht im Netzwerk, falls erlaubt) und listet jede gefundene Wärmepumpe mit Firmware, Seriennummer und Änderbarkeit auf.",
+        "es": "Lee las direcciones de arriba (y busca en la red si está permitido) y lista cada bomba de calor encontrada con su firmware, su número de serie y si se puede modificar."
+      }
+    }
+  ],
+  "widgets": [
+    {
+      "key": "overview",
+      "icon": "thermometer",
+      "label": {
+        "en": "Heat pump",
+        "fr": "Pompe à chaleur",
+        "de": "Wärmepumpe",
+        "es": "Bomba de calor"
+      },
+      "description": {
+        "en": "What it does now: mode, compressor, temperatures, power.",
+        "fr": "Ce qu’elle fait : mode, compresseur, températures, puissance.",
+        "de": "Was sie gerade tut: Modus, Verdichter, Temperaturen, Leistung.",
+        "es": "Lo que hace ahora: modo, compresor, temperaturas, potencia."
+      },
+      "settings": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Heat pump (the first if empty)",
+            "fr": "Pompe à chaleur (la première si vide)",
+            "de": "Wärmepumpe (die erste, wenn leer)",
+            "es": "Bomba de calor (la primera si vacío)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "history",
+      "icon": "trending-up",
+      "label": {
+        "en": "Heat pump curves",
+        "fr": "Courbes de la PAC",
+        "de": "Wärmepumpen-Verlauf",
+        "es": "Curvas de la bomba"
+      },
+      "description": {
+        "en": "Outdoor, flow, return and hot water temperatures over time.",
+        "fr": "Températures extérieure, départ, retour et eau chaude dans le temps.",
+        "de": "Außen-, Vorlauf-, Rücklauf- und Warmwassertemperatur im Verlauf.",
+        "es": "Temperaturas exterior, impulsión, retorno y agua caliente en el tiempo."
+      },
+      "settings": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Heat pump (the first if empty)",
+            "fr": "Pompe à chaleur (la première si vide)",
+            "de": "Wärmepumpe (die erste, wenn leer)",
+            "es": "Bomba de calor (la primera si vacío)"
+          }
+        },
+        {
+          "key": "period",
+          "type": "select",
+          "default": "last-day",
+          "label": {
+            "en": "Period",
+            "fr": "Période",
+            "de": "Zeitraum",
+            "es": "Periodo"
+          },
+          "options": [
+            {
+              "value": "last-day",
+              "label": {
+                "en": "24 hours",
+                "fr": "24 heures",
+                "de": "24 Stunden",
+                "es": "24 horas"
+              }
+            },
+            {
+              "value": "last-three-days",
+              "label": {
+                "en": "3 days",
+                "fr": "3 jours",
+                "de": "3 Tage",
+                "es": "3 días"
+              }
+            },
+            {
+              "value": "last-week",
+              "label": {
+                "en": "7 days",
+                "fr": "7 jours",
+                "de": "7 Tage",
+                "es": "7 días"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "energy",
+      "icon": "zap",
+      "label": {
+        "en": "Heat pump energy",
+        "fr": "Énergie de la PAC",
+        "de": "Wärmepumpen-Energie",
+        "es": "Energía de la bomba"
+      },
+      "description": {
+        "en": "Heat produced, electricity used, performance, compressor hours and starts.",
+        "fr": "Chaleur produite, électricité, performance, heures et démarrages du compresseur.",
+        "de": "Erzeugte Wärme, Strom, Arbeitszahl, Stunden und Starts des Verdichters.",
+        "es": "Calor producido, electricidad, rendimiento, horas y arranques del compresor."
+      },
+      "settings": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Heat pump (the first if empty)",
+            "fr": "Pompe à chaleur (la première si vide)",
+            "de": "Wärmepumpe (die erste, wenn leer)",
+            "es": "Bomba de calor (la primera si vacío)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "log",
+      "icon": "alert-triangle",
+      "label": {
+        "en": "Heat pump log",
+        "fr": "Journal de la PAC",
+        "de": "Wärmepumpen-Protokoll",
+        "es": "Registro de la bomba"
+      },
+      "description": {
+        "en": "The last errors and compressor stops, with their dates.",
+        "fr": "Les dernières erreurs et arrêts du compresseur, avec leurs dates.",
+        "de": "Die letzten Fehler und Verdichter-Abschaltungen mit Datum.",
+        "es": "Los últimos errores y paradas del compresor, con sus fechas."
+      },
+      "settings": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Heat pump (the first if empty)",
+            "fr": "Pompe à chaleur (la première si vide)",
+            "de": "Wärmepumpe (die erste, wenn leer)",
+            "es": "Bomba de calor (la primera si vacío)"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "error_occurred",
+      "label": {
+        "en": "The heat pump reports an error",
+        "fr": "La pompe à chaleur signale une erreur",
+        "de": "Die Wärmepumpe meldet einen Fehler",
+        "es": "La bomba de calor indica un error"
+      },
+      "description": {
+        "en": "A new entry in the error log of the controller (flow rate, high pressure, sensor…).",
+        "fr": "Une nouvelle entrée dans le journal d’erreurs du régulateur (débit, haute pression, sonde…).",
+        "de": "Ein neuer Eintrag im Fehlerspeicher des Reglers (Durchfluss, Hochdruck, Fühler…).",
+        "es": "Una nueva entrada en el registro de errores del regulador (caudal, alta presión, sonda…)."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Heat pump (any if empty)",
+            "fr": "Pompe à chaleur (toutes si vide)",
+            "de": "Wärmepumpe (alle, wenn leer)",
+            "es": "Bomba de calor (cualquiera si vacío)"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Heat pump name",
+            "fr": "Nom de la pompe à chaleur",
+            "de": "Name der Wärmepumpe",
+            "es": "Nombre de la bomba de calor"
+          }
+        },
+        {
+          "key": "error_code",
+          "type": "number",
+          "label": {
+            "en": "Error code",
+            "fr": "Code d’erreur",
+            "de": "Fehlercode",
+            "es": "Código de error"
+          }
+        },
+        {
+          "key": "error_text",
+          "type": "string",
+          "label": {
+            "en": "Error meaning",
+            "fr": "Signification",
+            "de": "Bedeutung",
+            "es": "Significado"
+          }
+        }
+      ]
+    },
+    {
+      "key": "mode_changed",
+      "label": {
+        "en": "The heat pump changes operating mode",
+        "fr": "La pompe à chaleur change de mode",
+        "de": "Die Wärmepumpe wechselt den Betriebszustand",
+        "es": "La bomba de calor cambia de modo"
+      },
+      "description": {
+        "en": "Heating, hot water, defrost, grid lock, cooling, no demand…: filter on the new mode or the previous one.",
+        "fr": "Chauffage, eau chaude, dégivrage, coupure fournisseur, rafraîchissement, pas de demande… : filtrez sur le nouveau mode ou le précédent.",
+        "de": "Heizen, Warmwasser, Abtauen, EVU-Sperre, Kühlen, keine Anforderung…: Filter auf den neuen oder den vorherigen Zustand.",
+        "es": "Calefacción, agua caliente, desescarche, bloqueo, refrigeración, sin demanda…: filtre por el modo nuevo o el anterior."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Heat pump (any if empty)",
+            "fr": "Pompe à chaleur (toutes si vide)",
+            "de": "Wärmepumpe (alle, wenn leer)",
+            "es": "Bomba de calor (cualquiera si vacío)"
+          }
+        },
+        {
+          "key": "mode",
+          "type": "select",
+          "label": {
+            "en": "New mode (any if empty)",
+            "fr": "Nouveau mode (tous si vide)",
+            "de": "Neuer Zustand (alle, wenn leer)",
+            "es": "Modo nuevo (cualquiera si vacío)"
+          },
+          "options": [
+            {
+              "value": "heating",
+              "label": {
+                "en": "Heating",
+                "fr": "Chauffage",
+                "de": "Heizen",
+                "es": "Calefacción"
+              }
+            },
+            {
+              "value": "hot_water",
+              "label": {
+                "en": "Hot water",
+                "fr": "Eau chaude",
+                "de": "Warmwasser",
+                "es": "Agua caliente"
+              }
+            },
+            {
+              "value": "pool",
+              "label": {
+                "en": "Pool / solar",
+                "fr": "Piscine / solaire",
+                "de": "Schwimmbad / Solar",
+                "es": "Piscina / solar"
+              }
+            },
+            {
+              "value": "grid_lock",
+              "label": {
+                "en": "Grid lock",
+                "fr": "Coupure fournisseur",
+                "de": "EVU-Sperre",
+                "es": "Bloqueo de la compañía"
+              }
+            },
+            {
+              "value": "defrost",
+              "label": {
+                "en": "Defrost",
+                "fr": "Dégivrage",
+                "de": "Abtauen",
+                "es": "Desescarche"
+              }
+            },
+            {
+              "value": "idle",
+              "label": {
+                "en": "No demand",
+                "fr": "Pas de demande",
+                "de": "Keine Anforderung",
+                "es": "Sin demanda"
+              }
+            },
+            {
+              "value": "external_heating",
+              "label": {
+                "en": "External heating",
+                "fr": "Chauffage externe",
+                "de": "Heizen extern",
+                "es": "Calefacción externa"
+              }
+            },
+            {
+              "value": "cooling",
+              "label": {
+                "en": "Cooling",
+                "fr": "Rafraîchissement",
+                "de": "Kühlen",
+                "es": "Refrigeración"
+              }
+            }
+          ]
+        },
+        {
+          "key": "previous_mode",
+          "type": "select",
+          "label": {
+            "en": "Previous mode (any if empty)",
+            "fr": "Mode précédent (tous si vide)",
+            "de": "Vorheriger Zustand (alle, wenn leer)",
+            "es": "Modo anterior (cualquiera si vacío)"
+          },
+          "options": [
+            {
+              "value": "heating",
+              "label": {
+                "en": "Heating",
+                "fr": "Chauffage",
+                "de": "Heizen",
+                "es": "Calefacción"
+              }
+            },
+            {
+              "value": "hot_water",
+              "label": {
+                "en": "Hot water",
+                "fr": "Eau chaude",
+                "de": "Warmwasser",
+                "es": "Agua caliente"
+              }
+            },
+            {
+              "value": "pool",
+              "label": {
+                "en": "Pool / solar",
+                "fr": "Piscine / solaire",
+                "de": "Schwimmbad / Solar",
+                "es": "Piscina / solar"
+              }
+            },
+            {
+              "value": "grid_lock",
+              "label": {
+                "en": "Grid lock",
+                "fr": "Coupure fournisseur",
+                "de": "EVU-Sperre",
+                "es": "Bloqueo de la compañía"
+              }
+            },
+            {
+              "value": "defrost",
+              "label": {
+                "en": "Defrost",
+                "fr": "Dégivrage",
+                "de": "Abtauen",
+                "es": "Desescarche"
+              }
+            },
+            {
+              "value": "idle",
+              "label": {
+                "en": "No demand",
+                "fr": "Pas de demande",
+                "de": "Keine Anforderung",
+                "es": "Sin demanda"
+              }
+            },
+            {
+              "value": "external_heating",
+              "label": {
+                "en": "External heating",
+                "fr": "Chauffage externe",
+                "de": "Heizen extern",
+                "es": "Calefacción externa"
+              }
+            },
+            {
+              "value": "cooling",
+              "label": {
+                "en": "Cooling",
+                "fr": "Rafraîchissement",
+                "de": "Kühlen",
+                "es": "Refrigeración"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Heat pump name",
+            "fr": "Nom de la pompe à chaleur",
+            "de": "Name der Wärmepumpe",
+            "es": "Nombre de la bomba de calor"
+          }
+        },
+        {
+          "key": "mode_text",
+          "type": "string",
+          "label": {
+            "en": "New mode, in words",
+            "fr": "Nouveau mode, en toutes lettres",
+            "de": "Neuer Zustand als Text",
+            "es": "Modo nuevo, en palabras"
+          }
+        }
+      ]
+    },
+    {
+      "key": "backup_heater_started",
+      "label": {
+        "en": "The backup heater switches on",
+        "fr": "L’appoint électrique démarre",
+        "de": "Die Zusatzheizung schaltet ein",
+        "es": "La resistencia de apoyo se enciende"
+      },
+      "description": {
+        "en": "The electric backup heater (second heat generator) starts: expensive electricity.",
+        "fr": "L’appoint électrique (2e générateur) démarre : électricité coûteuse.",
+        "de": "Die elektrische Zusatzheizung (zweiter Wärmeerzeuger) startet: teurer Strom.",
+        "es": "La resistencia eléctrica (2.º generador) arranca: electricidad cara."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Heat pump (any if empty)",
+            "fr": "Pompe à chaleur (toutes si vide)",
+            "de": "Wärmepumpe (alle, wenn leer)",
+            "es": "Bomba de calor (cualquiera si vacío)"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Heat pump name",
+            "fr": "Nom de la pompe à chaleur",
+            "de": "Name der Wärmepumpe",
+            "es": "Nombre de la bomba de calor"
+          }
+        },
+        {
+          "key": "outdoor_temperature",
+          "type": "number",
+          "label": {
+            "en": "Outdoor temperature (°C)",
+            "fr": "Température extérieure (°C)",
+            "de": "Außentemperatur (°C)",
+            "es": "Temperatura exterior (°C)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "backup_heater_stopped",
+      "label": {
+        "en": "The backup heater switches off",
+        "fr": "L’appoint électrique s’arrête",
+        "de": "Die Zusatzheizung schaltet aus",
+        "es": "La resistencia de apoyo se apaga"
+      },
+      "description": {
+        "en": "The electric backup heater stops, with how long it ran.",
+        "fr": "L’appoint électrique s’arrête, avec sa durée de fonctionnement.",
+        "de": "Die Zusatzheizung schaltet ab, mit ihrer Laufzeit.",
+        "es": "La resistencia de apoyo se detiene, con su tiempo de funcionamiento."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Heat pump (any if empty)",
+            "fr": "Pompe à chaleur (toutes si vide)",
+            "de": "Wärmepumpe (alle, wenn leer)",
+            "es": "Bomba de calor (cualquiera si vacío)"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Heat pump name",
+            "fr": "Nom de la pompe à chaleur",
+            "de": "Name der Wärmepumpe",
+            "es": "Nombre de la bomba de calor"
+          }
+        },
+        {
+          "key": "run_minutes",
+          "type": "number",
+          "label": {
+            "en": "Run time (minutes)",
+            "fr": "Durée (minutes)",
+            "de": "Laufzeit (Minuten)",
+            "es": "Duración (minutos)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "heat_pump_offline",
+      "label": {
+        "en": "The heat pump stops answering",
+        "fr": "La pompe à chaleur ne répond plus",
+        "de": "Die Wärmepumpe antwortet nicht mehr",
+        "es": "La bomba de calor deja de responder"
+      },
+      "description": {
+        "en": "No answer for 3 minutes: power cut, controller restarting, cable unplugged.",
+        "fr": "Aucune réponse depuis 3 minutes : coupure de courant, régulateur qui redémarre, câble débranché.",
+        "de": "Seit 3 Minuten keine Antwort: Stromausfall, Neustart des Reglers, Kabel getrennt.",
+        "es": "Sin respuesta desde hace 3 minutos: corte de luz, regulador reiniciándose, cable desconectado."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Heat pump (any if empty)",
+            "fr": "Pompe à chaleur (toutes si vide)",
+            "de": "Wärmepumpe (alle, wenn leer)",
+            "es": "Bomba de calor (cualquiera si vacío)"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Heat pump name",
+            "fr": "Nom de la pompe à chaleur",
+            "de": "Name der Wärmepumpe",
+            "es": "Nombre de la bomba de calor"
+          }
+        },
+        {
+          "key": "address",
+          "type": "string",
+          "label": {
+            "en": "IP address",
+            "fr": "Adresse IP",
+            "de": "IP-Adresse",
+            "es": "Dirección IP"
+          }
+        }
+      ]
+    },
+    {
+      "key": "heat_pump_online",
+      "label": {
+        "en": "The heat pump answers again",
+        "fr": "La pompe à chaleur répond de nouveau",
+        "de": "Die Wärmepumpe antwortet wieder",
+        "es": "La bomba de calor vuelve a responder"
+      },
+      "description": {
+        "en": "It answers again after having stopped answering.",
+        "fr": "Elle répond de nouveau après avoir cessé de répondre.",
+        "de": "Sie antwortet wieder, nachdem sie nicht mehr geantwortet hatte.",
+        "es": "Vuelve a responder después de haber dejado de hacerlo."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Heat pump (any if empty)",
+            "fr": "Pompe à chaleur (toutes si vide)",
+            "de": "Wärmepumpe (alle, wenn leer)",
+            "es": "Bomba de calor (cualquiera si vacío)"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "device_name",
+          "type": "string",
+          "label": {
+            "en": "Heat pump name",
+            "fr": "Nom de la pompe à chaleur",
+            "de": "Name der Wärmepumpe",
+            "es": "Nombre de la bomba de calor"
+          }
+        },
+        {
+          "key": "address",
+          "type": "string",
+          "label": {
+            "en": "IP address",
+            "fr": "Adresse IP",
+            "de": "IP-Adresse",
+            "es": "Dirección IP"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "read_values",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "Read the heat pump",
+        "fr": "Lire la pompe à chaleur",
+        "de": "Wärmepumpe auslesen",
+        "es": "Leer la bomba de calor"
+      },
+      "description": {
+        "en": "A fresh reading for a message or a condition: mode, temperatures, power, last error.",
+        "fr": "Une lecture fraîche pour un message ou une condition : mode, températures, puissance, dernière erreur.",
+        "de": "Eine frische Lesung für eine Nachricht oder Bedingung: Zustand, Temperaturen, Leistung, letzter Fehler.",
+        "es": "Una lectura reciente para un mensaje o una condición: modo, temperaturas, potencia, último error."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": true,
+          "label": {
+            "en": "Heat pump",
+            "fr": "Pompe à chaleur",
+            "de": "Wärmepumpe",
+            "es": "Bomba de calor"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "operating_mode",
+          "type": "string",
+          "label": {
+            "en": "Operating mode",
+            "fr": "Mode de fonctionnement",
+            "de": "Betriebszustand",
+            "es": "Modo de funcionamiento"
+          }
+        },
+        {
+          "key": "status",
+          "type": "string",
+          "label": {
+            "en": "Status",
+            "fr": "État",
+            "de": "Status",
+            "es": "Estado"
+          }
+        },
+        {
+          "key": "outdoor_temperature",
+          "type": "number",
+          "label": {
+            "en": "Outdoor (°C)",
+            "fr": "Extérieur (°C)",
+            "de": "Außen (°C)",
+            "es": "Exterior (°C)"
+          }
+        },
+        {
+          "key": "flow_temperature",
+          "type": "number",
+          "label": {
+            "en": "Flow (°C)",
+            "fr": "Départ (°C)",
+            "de": "Vorlauf (°C)",
+            "es": "Impulsión (°C)"
+          }
+        },
+        {
+          "key": "return_temperature",
+          "type": "number",
+          "label": {
+            "en": "Return (°C)",
+            "fr": "Retour (°C)",
+            "de": "Rücklauf (°C)",
+            "es": "Retorno (°C)"
+          }
+        },
+        {
+          "key": "hot_water_temperature",
+          "type": "number",
+          "label": {
+            "en": "Hot water (°C)",
+            "fr": "Eau chaude (°C)",
+            "de": "Warmwasser (°C)",
+            "es": "Agua caliente (°C)"
+          }
+        },
+        {
+          "key": "hot_water_target",
+          "type": "number",
+          "label": {
+            "en": "Hot water target (°C)",
+            "fr": "Consigne eau chaude (°C)",
+            "de": "Warmwasser-Soll (°C)",
+            "es": "Consigna agua caliente (°C)"
+          }
+        },
+        {
+          "key": "power_input_w",
+          "type": "number",
+          "label": {
+            "en": "Electrical power (W)",
+            "fr": "Puissance électrique (W)",
+            "de": "Elektrische Leistung (W)",
+            "es": "Potencia eléctrica (W)"
+          }
+        },
+        {
+          "key": "heat_output_w",
+          "type": "number",
+          "label": {
+            "en": "Heat output (W)",
+            "fr": "Puissance thermique (W)",
+            "de": "Heizleistung (W)",
+            "es": "Potencia térmica (W)"
+          }
+        },
+        {
+          "key": "last_error_code",
+          "type": "number",
+          "label": {
+            "en": "Last error code (0: none)",
+            "fr": "Code de la dernière erreur (0 : aucune)",
+            "de": "Letzter Fehlercode (0: keiner)",
+            "es": "Código del último error (0: ninguno)"
+          }
+        },
+        {
+          "key": "last_error_text",
+          "type": "string",
+          "label": {
+            "en": "Last error",
+            "fr": "Dernière erreur",
+            "de": "Letzter Fehler",
+            "es": "Último error"
+          }
+        }
+      ]
+    }
+  ]
+}
