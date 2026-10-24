@@ -1,6 +1,6 @@
 {
   "name": "gladys-luxtronik",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "External Gladys Assistant integration for Luxtronik heat pump controllers (Alpha Innotec, Novelan, Buderus, Nibe, Roth...), on the local network.",
   "homepage": "https://github.com/William-De71/gladys-luxtronik",
