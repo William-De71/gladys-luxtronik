@@ -12,7 +12,7 @@ Not affiliated with Alpha Innotec or the brands above.
 
 ## Requirements
 
-- Gladys Assistant 5.1.0 or later.
+- Gladys Assistant 5.3.0 or later.
 - The heat pump controller plugged into your network **with a cable** (Ethernet), on the same network as Gladys.
 - A fixed IP address for the controller (a DHCP reservation in your router). It is shown on the controller, in **Service > Information > IP address**.
 - Nothing to install on the controller: Gladys uses its built-in port 8889, the one of the Alpha Innotec tools and of the Home Assistant integrations.

@@ -5,7 +5,7 @@
 [![Licencia: Apache-2.0](https://img.shields.io/badge/licencia-Apache--2.0-blue.svg)](LICENSE)
 [![Última versión](https://img.shields.io/github/v/release/William-De71/gladys-luxtronik?sort=semver)](https://github.com/William-De71/gladys-luxtronik/releases)
 [![CI](https://img.shields.io/github/actions/workflow/status/William-De71/gladys-luxtronik/release.yml?branch=main&label=CI)](https://github.com/William-De71/gladys-luxtronik/actions/workflows/release.yml)
-[![Gladys](https://img.shields.io/badge/Gladys-%E2%89%A5%205.1.0-2f6fb5)](https://gladysassistant.com)
+[![Gladys](https://img.shields.io/badge/Gladys-%E2%89%A5%205.3.0-2f6fb5)](https://gladysassistant.com)
 
 ![Luxtronik para Gladys Assistant](cover.jpg)
 
@@ -132,7 +132,7 @@ Ejemplos:
 
 ## Requisitos
 
-- Gladys Assistant **5.1.0 o posterior** (widgets de panel y disparadores y acciones de escena de las integraciones; las instancias más antiguas no pueden instalar la integración).
+- Gladys Assistant **5.3.0 o posterior** (palabras clave del catálogo de Gladys 5.3, widgets de panel y disparadores y acciones de escena de las integraciones; las instancias más antiguas no pueden instalar la integración).
 - Un regulador Luxtronik 2.0 o 2.1 conectado a la red por cable, con una dirección IP fija (una reserva DHCP en su router).
 
 ## Instalación

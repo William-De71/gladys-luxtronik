@@ -12,7 +12,7 @@ Sans lien avec Alpha Innotec ni les marques citées.
 
 ## Prérequis
 
-- Gladys Assistant 5.1.0 ou plus récent.
+- Gladys Assistant 5.3.0 ou plus récent.
 - Le régulateur de la pompe à chaleur branché à votre réseau **par un câble** (Ethernet), sur le même réseau que Gladys.
 - Une adresse IP fixe pour le régulateur (une réservation DHCP dans votre box). Elle s’affiche sur le régulateur, dans **Service > Information > Adresse IP**.
 - Rien à installer sur le régulateur : Gladys utilise son port intégré 8889, celui des outils Alpha Innotec et des intégrations Home Assistant.

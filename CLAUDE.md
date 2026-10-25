@@ -14,7 +14,7 @@ Gladys through
 and to the controller **on the local network only** (`transports: ["local"]`),
 over its binary socket, TCP port 8889.
 
-A **device integration** (`type: "device"`, Gladys 5.1.0+: widgets and
+A **device integration** (`type: "device"`, Gladys 5.3.0+: catalog keywords, widgets and
 scenes). The client in `src/luxtronik/` was written from the protocol as
 documented by [python-luxtronik](https://github.com/Bouni/python-luxtronik)
 and [BenPru/luxtronik](https://github.com/BenPru/luxtronik) (MIT): no code

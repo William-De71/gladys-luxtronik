@@ -12,7 +12,7 @@ Nicht mit Alpha Innotec oder den genannten Marken verbunden.
 
 ## Voraussetzungen
 
-- Gladys Assistant 5.1.0 oder neuer.
+- Gladys Assistant 5.3.0 oder neuer.
 - Der Regler der Wärmepumpe **per Kabel** (Ethernet) mit Ihrem Netzwerk verbunden, im selben Netzwerk wie Gladys.
 - Eine feste IP-Adresse für den Regler (DHCP-Reservierung im Router). Sie steht am Regler unter **Service > Information > IP-Adresse**.
 - Am Regler ist nichts zu installieren: Gladys nutzt seinen eingebauten Port 8889, den der Alpha-Innotec-Werkzeuge und der Home-Assistant-Integrationen.

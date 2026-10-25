@@ -12,7 +12,7 @@ Sin relación con Alpha Innotec ni con las marcas citadas.
 
 ## Requisitos
 
-- Gladys Assistant 5.1.0 o posterior.
+- Gladys Assistant 5.3.0 o posterior.
 - El regulador de la bomba de calor conectado a su red **por cable** (Ethernet), en la misma red que Gladys.
 - Una dirección IP fija para el regulador (una reserva DHCP en su router). Aparece en el regulador, en **Servicio > Información > Dirección IP**.
 - Nada que instalar en el regulador: Gladys usa su puerto integrado 8889, el de las herramientas de Alpha Innotec y de las integraciones de Home Assistant.
